@@ -1,0 +1,16 @@
+{
+  "name": "start_point",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "mocha specs",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "mocha": "^5.2.0"
+  }
+}
