@@ -25,5 +25,14 @@ describe('StreetTest', () =>{
 	it("should have name", () =>{
 		assert.equal("Dickson Street", street1.getName());
 		assert.equal("Montgomery Street", street2.getName());
-	})
+	});
+
+	it("should store trees", () =>{
+		street1.getTrees().push(tree1);
+		street1.getTrees().push(tree2);
+		street1.getTrees().push(tree3);
+		street2.getTrees().push(tree4);
+		assert.equal(3, street1.getTrees().length);
+		assert.equal(1, street2.getTrees().length);
+	});
 })
