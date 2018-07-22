@@ -2,28 +2,40 @@ import Town from './town.js';
 
 class TownManager{
 
-	constructor(...townsToManage){
+	constructor(...townsToManageList){
 		this.townsToManage = [];
-		townsToManage.forEach(currentTown => this.townsToManage.push(new Town(currentTown)));
+		townsToManageList.forEach(currentTown => this.townsToManage.push(currentTown));
 	}
 
-	getTownNames(){
+	getTowns(){
 		return this.townsToManage;
 	}
 
 	queryATownByName(townToQuery){
 		for(const town of this.townsToManage){
-			console.log(town);
-			if(town.townName === townToQuery){
+			if(town.getTownName() === townToQuery){
 				return town;
 			}
 		}
 		return null;
 	}
 
-	// addTreeToAPark(park, tree, parkLane, sector){
+	queryATownByPostcode(postcodeOfATownToQuery){
+		for(const town of this.townsToManage){
+			if(town.getTownPostcode() === postcodeOfATownToQuery){
+				return town;
+			}
+		}
+		return null;
+	}
 
-	// }
+	addTown(townToAdd){
+		let townFoundByPostcode = this.queryATownByPostcode(townToAdd.getTownPostcode());
+		let townFoundByName = this.queryATownByName(townToAdd.getTownName());
+		if(!townFoundByName && !townFoundByPostcode){
+			this.townsToManage.push(townToAdd);
+		}
+	}
 }
 
 export default TownManager;
