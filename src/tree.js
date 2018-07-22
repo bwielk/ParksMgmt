@@ -1,7 +1,9 @@
 class Tree{
-	constructor(treeID, treeType){
+	constructor(treeID, treeType, heightInCentimeters, yearOfPlanting){
 		this.treeID = treeID;
 		this.treeType = treeType.valueOf();
+		this.heightInCentimeters = heightInCentimeters;
+		this.yearOfPlanting = yearOfPlanting;
 	}
 
 	getTreeId(){
@@ -10,6 +12,14 @@ class Tree{
 
 	getTreeType(){
 		return this.treeType;
+	}
+
+	getHeightInCentimeters(){
+		return this.heightInCentimeters;
+	}
+
+	getYearOfPlanting(){
+		return this.yearOfPlanting;
 	}
 }
 
