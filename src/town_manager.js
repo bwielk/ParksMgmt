@@ -30,11 +30,14 @@ class TownManager{
 	}
 
 	addTown(townToAdd){
+		if(!(townToAdd instanceof Town)){
+			return;
+		};
 		let townFoundByPostcode = this.queryATownByPostcode(townToAdd.getTownPostcode());
 		let townFoundByName = this.queryATownByName(townToAdd.getTownName());
 		if(!townFoundByName && !townFoundByPostcode){
 			this.townsToManage.push(townToAdd);
-		}
+		};
 	}
 }
 

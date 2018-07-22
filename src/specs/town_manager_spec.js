@@ -66,6 +66,13 @@ describe("TownManagerTest", () =>{
 		townManager.addTown(townToAdd);
 		assert.equal(4, townManager.getTowns().length);
 	});
+
+	it("should only add object of type Town when adding a new town", () =>{
+		townManager.addTown("FakeTown");
+		townManager.addTown(tree1, tree2, tree3, tree4);
+		townManager.addTown(2344);
+		assert.equal(2, townManager.getTowns().length);
+	});
 })
 
 
