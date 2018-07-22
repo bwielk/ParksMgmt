@@ -1,4 +1,4 @@
-var assert = require('assert');
+import assert from 'assert';
 import Tree from '../tree.js';
 import TreeType from '../treeType_enum.js';
 

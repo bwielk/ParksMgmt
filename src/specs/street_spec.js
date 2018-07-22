@@ -2,7 +2,7 @@ import assert from 'assert';
 import Street from '../street.js';
 import Tree from '../tree.js';
 import TreeType from '../treeType_enum.js';
-import ParkManager from '../park_manager.js';
+import ParkManager from '../town_manager.js';
 
 describe('StreetTest', () =>{
 
