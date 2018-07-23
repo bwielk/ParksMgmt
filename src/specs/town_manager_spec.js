@@ -77,11 +77,16 @@ describe("TownManagerTest", () =>{
 
 	it("should be able to query a park by its name", () =>{
 		let townStoke = townManager.queryATownByName("Stoke");
-		console.log(townStoke);
 		townStoke.parks.push(new Park("Blaise's Park"));
 		townStoke.parks.push(new Park("John's Park"));
 		assert.equal(2, townStoke.parks.length);
+		let queriedPark = townManager.queryAParkByName("Blaise's Park");
+		assert.equal("Blaise's Park", queriedPark.parkName);
 	});
+
+	it("should return null if there is no park", () =>{
+		townManager.queryATownByName("Burgh").parks.push(new Park("Tom's Park"));
+		let queriedPark = townManager.queryAParkByName("Thomas' Park");
+		assert.equal(null, queriedPark);
+	})
 })
-
-

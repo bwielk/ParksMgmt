@@ -57,7 +57,7 @@ class TownManager{
 			return;
 		}
 		let town = this.queryATownByName(nameOfaTownAcceptingANewPark);
-		if(town && this.queryAParkByName(parkToAdd.parkName)){
+		if(!this.queryAParkByName(parkToAdd.parkName)){
 			town.parks.push(parkToAdd);
 		}
 	}
