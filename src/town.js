@@ -1,8 +1,9 @@
 class Town{
-	
+
 	constructor(townName, postcode){
 		this.townName = townName;
 		this.postcode = postcode;
+		this.parks = [];
 	}
 
 	getTownName(){

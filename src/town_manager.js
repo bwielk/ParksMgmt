@@ -39,6 +39,17 @@ class TownManager{
 			this.townsToManage.push(townToAdd);
 		};
 	}
+
+	addParkToTown(parkToAdd, townAcceptingANewPark){
+		if(!(parkToAdd instanceof Park) && !(townAcceptingANewPark instanceof Town)){
+			return;
+		}
+		let town = queryATownByPostcode(townAcceptingANewPark.getTownPostcode());
+		if(!this.queryATownByName(townAcceptingANewPark.getTownName()) && !town && !this.queryAParkByName(parkToAdd.parkName)){
+			town.parks.push(parkToAdd);
+		}
+	}
 }
+
 
 export default TownManager;
