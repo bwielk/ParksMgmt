@@ -4,6 +4,7 @@ import Tree from '../tree.js';
 import Street from '../street.js';
 import TreeType from '../treeType_enum.js';
 import Town from '../town.js';
+import Park from '../park.js';
 
 describe("TownManagerTest", () =>{
 
@@ -55,12 +56,12 @@ describe("TownManagerTest", () =>{
 	});
 
 	it("should return null if no town found having entered a wrong postcode", () =>{
-		let resultTown = townManager.queryATownByPostcode("EH");
+		let resultTown = townManager.queryATownByPostcode("EK");
 		assert.equal(null, resultTown);
 	});
 
 	it("should be able to add more towns to an existing list", () =>{
-		townToAdd = new Town("Hugney", "EH");
+		townToAdd = new Town("Hugney", "HU");
 		townManager.addTown(townToAdd);
 		townToAdd = new Town("Partchew", "PA");
 		townManager.addTown(townToAdd);
@@ -72,6 +73,14 @@ describe("TownManagerTest", () =>{
 		townManager.addTown(tree1, tree2, tree3, tree4);
 		townManager.addTown(2344);
 		assert.equal(2, townManager.getTowns().length);
+	});
+
+	it("should be able to query a park by its name", () =>{
+		let townStoke = townManager.queryATownByName("Stoke");
+		console.log(townStoke);
+		townStoke.parks.push(new Park("Blaise's Park"));
+		townStoke.parks.push(new Park("John's Park"));
+		assert.equal(2, townStoke.parks.length);
 	});
 })
 

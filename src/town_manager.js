@@ -1,4 +1,5 @@
 import Town from './town.js';
+import Park from './park.js';
 
 class TownManager{
 
@@ -29,6 +30,17 @@ class TownManager{
 		return null;
 	}
 
+	queryAParkByName(nameOfaParkToQuery){
+		for(const town of this.townsToManage){
+			for(const park of town.parks){
+				if(park.parkName === nameOfaParkToQuery){
+					return park;
+				}
+			}
+		}
+		return null;
+	}
+
 	addTown(townToAdd){
 		if(!(townToAdd instanceof Town)){
 			return;
@@ -40,12 +52,12 @@ class TownManager{
 		};
 	}
 
-	addParkToTown(parkToAdd, townAcceptingANewPark){
-		if(!(parkToAdd instanceof Park) && !(townAcceptingANewPark instanceof Town)){
+	addParkToTown(parkToAdd, nameOfaTownAcceptingANewPark){
+		if(!(parkToAdd instanceof Park)){
 			return;
 		}
-		let town = queryATownByPostcode(townAcceptingANewPark.getTownPostcode());
-		if(!this.queryATownByName(townAcceptingANewPark.getTownName()) && !town && !this.queryAParkByName(parkToAdd.parkName)){
+		let town = this.queryATownByName(nameOfaTownAcceptingANewPark);
+		if(town && this.queryAParkByName(parkToAdd.parkName)){
 			town.parks.push(parkToAdd);
 		}
 	}

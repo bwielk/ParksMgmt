@@ -17,9 +17,10 @@ describe("TownTest", () =>{
 	});
 
 	it("park should be stored by towns managed by a town manager", () =>{
-		townManager.addParkToTown("Stoke", park1);
-		let result = townManager.queryATownByName("Stoke").getParkByName("Victoria Park");
-		assert.equal("Victoria Park", result.parkName);
+		townManager.addParkToTown(park1, "Stoke");
+		let result = townManager.queryATownByName("Stoke");
+		console.log(result);
+		assert.equal("Victoria Park", result.parks[0].parkName);
 	})
 
 })
