@@ -16,7 +16,14 @@ describe("TownTest", () =>{
 		park2 = new Park("Albert Park");
 	});
 
-	it("park should be stored by towns managed by a town manager", () =>{
+	it("streets should be stored by towns managed by a town manager", () =>{
+		townManager.addStreetToTown(new Street("Worcester Street", "EH321UH"), "Burgh");
+		townManager.addStreetToTown(new Street("Manchester Street", "EH331UJ"), "Burgh");
+		let result = townManager.queryATownByName("Burgh");
+		assert.equal(2, result.streets.length);
+	});
+
+	it("parks should be stored by towns managed by a town manager", () =>{
 		townManager.addParkToTown(park1, "Stoke");
 		let result = townManager.queryATownByName("Stoke");
 		console.log(result);

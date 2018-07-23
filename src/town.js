@@ -4,6 +4,7 @@ class Town{
 		this.townName = townName;
 		this.postcode = postcode;
 		this.parks = [];
+		this.streets = [];
 	}
 
 	getTownName(){

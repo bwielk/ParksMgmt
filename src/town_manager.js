@@ -1,5 +1,6 @@
 import Town from './town.js';
 import Park from './park.js';
+import Street from './street.js';
 
 class TownManager{
 
@@ -41,6 +42,17 @@ class TownManager{
 		return null;
 	}
 
+	queryAStreetByName(nameOfAStreetToQuery){
+		for(const town of this.townsToManage){
+			for(const street of town.streets){
+				if(street.streetName === nameOfAStreetToQuery){
+					return street;
+				}
+			}
+		}
+		return null;
+	}
+
 	addTown(townToAdd){
 		if(!(townToAdd instanceof Town)){
 			return;
@@ -59,6 +71,16 @@ class TownManager{
 		let town = this.queryATownByName(nameOfaTownAcceptingANewPark);
 		if(!this.queryAParkByName(parkToAdd.parkName)){
 			town.parks.push(parkToAdd);
+		}
+	}
+
+	addStreetToTown(streetToAdd, nameOfATownAcceptingANewStreet){
+		if(!(streetToAdd instanceof Street)){
+			return;
+		}
+		let town = this.queryATownByName(nameOfATownAcceptingANewStreet);
+		if(!this.queryAStreetByName(streetToAdd.streetName)){
+			town.streets.push(streetToAdd);
 		}
 	}
 }
